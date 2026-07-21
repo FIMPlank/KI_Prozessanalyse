@@ -249,6 +249,28 @@ a {
   margin: 0 0 0.5rem;
 }
 
+.tools-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tool-name {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
 .card p {
   margin: 0;
   font-size: 0.9rem;
@@ -280,7 +302,7 @@ a {
   font-style: normal;
 }
 
-/* Wizard */
+/* Tool-Analyse */
 .wizard-section {
   padding: 4rem 0;
 }
@@ -298,19 +320,47 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.process-path svg {
-  width: 100%;
-  height: 1rem;
-  overflow: visible;
-  display: block;
+.path-track {
+  position: relative;
+  height: 3px;
+  background-color: var(--color-accent-light);
+  border-radius: 999px;
+  margin: 0.6rem 0 0.5rem;
 }
 
-.process-path .progress-line {
-  transition: x2 0.4s ease-out;
+.path-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: 999px;
+  transition: width 0.4s ease;
 }
 
-.process-path circle {
-  transition: r 0.3s ease, fill 0.3s ease;
+.path-node {
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--color-neutral);
+  border: 2px solid var(--color-accent-light);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.path-node.done {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.path-node.current {
+  width: 17px;
+  height: 17px;
+  background-color: var(--color-accent);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(31, 163, 126, 0.22);
 }
 
 .wizard-question h1 {
