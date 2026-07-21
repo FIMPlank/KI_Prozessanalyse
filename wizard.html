@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wizard — KI-Prozessanalyse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">KI-Prozessanalyse</a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="methodik.html">Methodik</a></li>
+        <li><a href="wizard.html">Wizard starten</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wizard-section">
+    <div class="wrap-narrow">
+      <div id="process-path" class="process-path"></div>
+
+      <div class="wizard-question">
+        <h1 id="question-prompt"></h1>
+        <p id="question-helper" class="helper" hidden></p>
+
+        <div id="options" class="options" role="radiogroup"></div>
+
+        <button id="back-link" type="button" class="back-link" hidden>&larr; Zurück</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 KI-Prozessanalyse</span>
+    <nav aria-label="Rechtliches">
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/wizard-data.js"></script>
+<script src="js/process-path.js"></script>
+<script src="js/wizard.js"></script>
+</body>
+</html>
