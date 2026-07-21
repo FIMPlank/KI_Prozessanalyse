@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<script>document.documentElement.classList.add("js");</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>KI-Prozessanalyse — Finden Sie das passende Tool</title>
@@ -34,13 +35,14 @@
 <main>
   <section class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1>Finden Sie das passende KI-Tool für Ihre Prozesse</h1>
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow eyebrow--on-dark">Wissenschaftliche Tool-Analyse</p>
+        <h1 class="heading-hero">Finden Sie das <em>passende</em> KI-Tool für Ihre Prozesse</h1>
         <p class="hero-subhead">
           Beantworten Sie 5 kurze Fragen und erhalten Sie eine nachvollziehbare Empfehlung &ndash; abgestimmt auf
           Einsatzgebiet, Hosting, Kosten und Beschaffung.
         </p>
-        <a href="wizard.html" class="btn">Kostenlose Tool-Analyse starten</a>
+        <a href="wizard.html" class="btn btn--arrow">Kostenlose Tool-Analyse starten</a>
         <ul class="reassurance-list">
           <li>
             <svg class="reassurance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -66,7 +68,40 @@
         </ul>
       </div>
 
-      <div class="hero-sample">
+      <div class="hero-sample" data-reveal>
+        <svg class="hero-network" viewBox="0 0 520 360" aria-hidden="true" focusable="false">
+          <defs>
+            <filter id="hero-blur" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="26" />
+            </filter>
+          </defs>
+          <circle cx="430" cy="80" r="110" fill="#8FE3C4" opacity="0.22" filter="url(#hero-blur)" />
+          <circle cx="70" cy="300" r="90" fill="#1FA37E" opacity="0.16" filter="url(#hero-blur)" />
+
+          <path class="flow-path flow-path--faint" d="M458,72 C486,58 505,50 536,38" />
+          <path class="flow-path flow-path--dashed" d="M40,250 C90,236 142,240 196,254" />
+          <path class="flow-path" d="M62,326 C112,306 142,286 196,254" />
+          <path class="flow-path" d="M196,254 C236,224 276,194 332,152" />
+          <path class="flow-path" d="M332,152 C372,127 412,102 458,72" />
+
+          <circle class="flow-dot flow-dot--p1" r="3.2" />
+          <circle class="flow-dot flow-dot--p2" r="3.2" />
+          <circle class="flow-dot flow-dot--p3" r="3.2" />
+
+          <circle class="flow-node-circle" cx="40" cy="250" r="5" />
+          <circle class="flow-node-circle" cx="62" cy="326" r="8" />
+          <text class="flow-label" x="62" y="346" text-anchor="middle">Input</text>
+
+          <circle class="flow-node-circle" cx="196" cy="254" r="12" />
+          <text class="flow-label" x="196" y="238" text-anchor="middle">Analyse</text>
+
+          <circle class="flow-node-circle flow-node-circle--highlight node-pulse" cx="332" cy="152" r="18" />
+          <text class="flow-label" x="332" y="132" text-anchor="middle">Entscheidung</text>
+
+          <circle class="flow-node-circle flow-node-circle--highlight node-pulse node-pulse--delay" cx="458" cy="72" r="22" />
+          <text class="flow-label" x="458" y="46" text-anchor="middle">Empfehlung</text>
+        </svg>
+
         <div class="sample-card" role="img" aria-label="Beispielhaftes Ergebnis: PICTURE nova mit hoher Übereinstimmung. Dies ist nicht Ihr tatsächliches Ergebnis.">
           <span class="sample-badge">Beispiel-Ergebnis</span>
           <p class="sample-tool">PICTURE nova</p>
@@ -90,55 +125,98 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <h2>Drei Anwendungsfälle</h2>
+  <section class="section how-it-works flow-section" id="wie-es-funktioniert">
+    <span class="node node--md flow-node" aria-hidden="true">01</span>
+    <div class="wrap" data-reveal>
+      <p class="eyebrow">Ablauf</p>
+      <h2 class="heading-section">So funktioniert die Tool-Analyse</h2>
+      <ol class="process-sequence">
+        <li>
+          <span class="node node--lg node--active">01</span>
+          <h3>Fragen beantworten</h3>
+          <p>5 kurze Fragen zu Ausgangslage, Team und Hosting.</p>
+        </li>
+        <li>
+          <span class="node node--lg">02</span>
+          <h3>Kontext erfassen</h3>
+          <p>Beschaffungsrahmen und wichtigstes Kriterium einordnen.</p>
+        </li>
+        <li>
+          <span class="node node--lg">03</span>
+          <h3>Tools bewerten</h3>
+          <p>Ein Scoring-Modell gewichtet vier Tools anhand Ihrer Antworten.</p>
+        </li>
+        <li>
+          <span class="node node--lg">04</span>
+          <h3>Empfehlung erhalten</h3>
+          <p>Primäre Empfehlung, Begründung und Alternative auf einen Blick.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section flow-section" id="anwendungsfaelle">
+    <span class="node node--md flow-node" aria-hidden="true">02</span>
+    <div class="wrap" data-reveal>
+      <p class="eyebrow">Drei Anwendungsfälle</p>
+      <h2 class="heading-section">Von der Modellierung bis zur Verbesserung</h2>
       <div class="cards">
-        <div class="card">
-          <svg class="usecase-icon" viewBox="0 0 140 48" aria-hidden="true">
-            <line x1="20" y1="24" x2="120" y2="24" stroke="var(--color-accent-light)" stroke-width="2" />
-            <circle cx="20" cy="24" r="8" fill="var(--color-primary)" />
-            <circle cx="70" cy="24" r="8" fill="var(--color-accent)" />
-            <circle cx="120" cy="24" r="8" fill="var(--color-primary)" />
+        <div class="card" tabindex="0">
+          <svg class="usecase-icon" viewBox="0 0 140 70" aria-hidden="true">
+            <line class="usecase-line" x1="20" y1="20" x2="52" y2="38" stroke="#8FE3C4" stroke-width="1.5" stroke-dasharray="1 5" stroke-linecap="round" />
+            <line class="usecase-line" x1="16" y1="38" x2="52" y2="38" stroke="#8FE3C4" stroke-width="1.5" stroke-dasharray="1 5" stroke-linecap="round" />
+            <line class="usecase-line" x1="20" y1="56" x2="52" y2="38" stroke="#8FE3C4" stroke-width="1.5" stroke-dasharray="1 5" stroke-linecap="round" />
+            <line x1="8" y1="30" x2="16" y2="30" stroke="#0B2B24" stroke-width="1.2" stroke-linecap="round" />
+            <line x1="8" y1="34" x2="14" y2="34" stroke="#0B2B24" stroke-width="1.2" stroke-linecap="round" />
+            <circle class="usecase-dot" cx="20" cy="20" r="3" fill="#0B2B24" />
+            <circle class="usecase-dot" cx="16" cy="38" r="3" fill="#0B2B24" />
+            <circle class="usecase-dot" cx="20" cy="56" r="3" fill="#0B2B24" />
+            <line class="usecase-line" x1="52" y1="38" x2="120" y2="38" stroke="#8FE3C4" stroke-width="2" stroke-linecap="round" />
+            <circle cx="52" cy="38" r="6" fill="#0B2B24" stroke="#8FE3C4" stroke-width="1.5" />
+            <circle cx="120" cy="38" r="9" fill="#1FA37E" />
           </svg>
           <h3>Prozessmodellierung</h3>
           <p>Abläufe strukturiert erfassen — vorbereitend oder kollaborativ, je nach Ausgangslage.</p>
         </div>
-        <div class="card">
-          <svg class="usecase-icon" viewBox="0 0 140 48" aria-hidden="true">
-            <line x1="20" y1="24" x2="120" y2="24" stroke="var(--color-accent-light)" stroke-width="2" />
-            <circle cx="20" cy="24" r="8" fill="var(--color-primary)" />
-            <rect x="60" y="12" width="24" height="24" transform="rotate(45 72 24)" fill="var(--color-warn)" />
-            <circle cx="120" cy="24" r="8" fill="var(--color-primary)" />
+        <div class="card" tabindex="0">
+          <svg class="usecase-icon" viewBox="0 0 140 70" aria-hidden="true">
+            <line class="usecase-line" x1="16" y1="38" x2="124" y2="38" stroke="#8FE3C4" stroke-width="2" stroke-linecap="round" />
+            <line x1="50" y1="26" x2="50" y2="50" stroke="#0B2B24" stroke-width="2" stroke-linecap="round" />
+            <line x1="90" y1="20" x2="90" y2="56" stroke="#0B2B24" stroke-width="2" stroke-linecap="round" />
+            <circle cx="16" cy="38" r="6" fill="#0B2B24" />
+            <circle cx="90" cy="38" r="10" fill="#1FA37E" />
+            <path d="M85,38 l4,4 l7,-8" fill="none" stroke="#F6F5F1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="124" cy="38" r="6" fill="#0B2B24" stroke="#8FE3C4" stroke-width="1.5" />
           </svg>
           <h3>Prozesskonformität</h3>
           <p>Modelle gegen Vorgaben und Standards prüfen, bevor sie in Betrieb gehen.</p>
         </div>
-        <div class="card">
-          <svg class="usecase-icon" viewBox="0 0 140 48" aria-hidden="true">
-            <line x1="20" y1="36" x2="70" y2="24" stroke="var(--color-accent-light)" stroke-width="2" />
-            <line x1="70" y1="24" x2="120" y2="10" stroke="var(--color-accent-light)" stroke-width="2" />
-            <circle cx="20" cy="36" r="7" fill="var(--color-primary)" />
-            <circle cx="70" cy="24" r="7" fill="var(--color-accent)" />
-            <circle cx="120" cy="10" r="7" fill="var(--color-accent)" />
+        <div class="card" tabindex="0">
+          <svg class="usecase-icon" viewBox="0 0 140 70" aria-hidden="true">
+            <path class="usecase-line" d="M20,50 C20,22 100,22 100,42" fill="none" stroke="#8FE3C4" stroke-width="1.5" stroke-dasharray="2 6" stroke-linecap="round" />
+            <path d="M20,50 C40,58 60,58 74,50" fill="none" stroke="#1FA37E" stroke-width="2" stroke-linecap="round" />
+            <circle cx="20" cy="50" r="7" fill="#0B2B24" />
+            <circle cx="74" cy="50" r="9" fill="#1FA37E" />
+            <line x1="70" y1="38" x2="78" y2="46" stroke="#0B2B24" stroke-width="1.4" stroke-linecap="round" />
+            <line x1="78" y1="38" x2="70" y2="46" stroke="#0B2B24" stroke-width="1.4" stroke-linecap="round" />
           </svg>
           <h3>Prozessverbesserung</h3>
           <p>Schwachstellen erkennen und Verbesserungspotenziale datenbasiert ableiten.</p>
         </div>
       </div>
-      <p style="margin-top: 1rem; font-size: 0.9rem">
-        <a href="methodik.html" style="color: var(--color-accent); text-decoration: underline">Mehr zur Methodik</a>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem">
+        <a href="methodik.html" class="link-underline">Mehr zur Methodik</a>
         &middot;
-        <a href="methodik.html#open-source-tools" style="color: var(--color-accent); text-decoration: underline"
-          >+ 6 Open-Source-Alternativen</a
-        >
+        <a href="methodik.html#open-source-tools" class="link-underline">+ 6 Open-Source-Alternativen</a>
       </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <h2>Die verglichenen Tools</h2>
+  <section class="section flow-section flow-section--right" id="tools">
+    <span class="node node--md flow-node" aria-hidden="true">03</span>
+    <div class="wrap" data-reveal>
+      <p class="eyebrow">Vergleich</p>
+      <h2 class="heading-section">Die verglichenen Tools</h2>
       <div class="tools-grid">
         <div class="card">
           <h3 class="tool-name">ADONIS</h3>
@@ -177,28 +255,39 @@
           </dl>
         </div>
       </div>
-      <p style="margin-top: 1rem; font-size: 0.9rem">
+      <p style="margin-top: 1.5rem; font-size: 0.9rem">
         Welches davon zu Ihnen passt, ermittelt die
-        <a href="wizard.html" style="color: var(--color-accent); text-decoration: underline">Tool-Analyse</a> anhand
-        von 5 Fragen.
+        <a href="wizard.html" class="link-underline">Tool-Analyse</a> anhand von 5 Fragen.
       </p>
     </div>
   </section>
 
-  <section class="quote-section">
-    <div class="wrap-narrow">
+  <section class="quote-section flow-section field-warm" id="praxis">
+    <span class="node node--md flow-node" aria-hidden="true">04</span>
+    <div class="wrap-narrow" data-reveal>
       <blockquote>
         &bdquo;In zwei Monaten haben wir 14 Prozesse modelliert &mdash; und dabei erstmals eine belastbare
         Datengrundlage für unsere Prozesslandkarte geschaffen.&ldquo;
       </blockquote>
       <cite>Praxistest, byte &mdash; 14 modellierte Prozesse über 2 Monate</cite>
       <p style="margin-top: 1rem; font-size: 0.8rem">
-        <a
-          href="https://epub.uni-bayreuth.de/id/eprint/8942/1/KI_in_der_Prozessanalyse.pdf"
-          style="color: var(--color-accent); text-decoration: underline"
+        <a href="https://epub.uni-bayreuth.de/id/eprint/8942/1/KI_in_der_Prozessanalyse.pdf" class="link-underline"
           >Quelle: Whitepaper &bdquo;KI in der Prozessanalyse&ldquo; (PDF)</a
         >
       </p>
+    </div>
+  </section>
+
+  <section class="section cta-section flow-section flow-section--center" id="start">
+    <span class="node node--md node--active flow-node" aria-hidden="true">05</span>
+    <div class="wrap-narrow cta-panel" data-reveal>
+      <p class="eyebrow">Empfehlung</p>
+      <h2 class="heading-section">Bereit für Ihre <em>persönliche</em> Empfehlung?</h2>
+      <p class="lede" style="margin: 0.75rem auto 2rem">
+        5 Fragen, etwa 2 Minuten, keine Registrierung &ndash; und eine nachvollziehbare Empfehlung für Ihr
+        Prozessmanagement.
+      </p>
+      <a href="wizard.html" class="btn btn--arrow">Kostenlose Tool-Analyse starten</a>
     </div>
   </section>
 </main>
@@ -214,5 +303,7 @@
     </nav>
   </div>
 </footer>
+
+<script src="js/reveal.js"></script>
 </body>
 </html>

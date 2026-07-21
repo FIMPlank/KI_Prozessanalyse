@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<script>document.documentElement.classList.add("js");</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Methodik — KI-Prozessanalyse</title>
@@ -28,15 +29,19 @@
 </header>
 
 <main>
-  <section class="section">
-    <div class="wrap-narrow">
-      <h1 style="font-family: var(--font-display); font-size: 1.875rem; color: var(--color-primary)">Methodik</h1>
-      <p style="margin-top: 1rem; color: rgba(16, 24, 21, 0.8)">
+  <section class="section flow-section">
+    <span class="node node--md flow-node" aria-hidden="true">01</span>
+    <div class="wrap-narrow" data-reveal>
+      <p class="eyebrow">Methodik</p>
+      <h1 class="heading-section">Wie die Empfehlung entsteht</h1>
+      <p class="lede" style="margin-top: 1rem">
         Die Tool-Empfehlung basiert auf dem Entscheidungsbaum aus dem Whitepaper und ordnet drei
         Anwendungsfälle sowie sechs Bewertungskriterien den Antworten aus der Tool-Analyse zu.
       </p>
 
-      <h2 style="margin-top: 2.5rem">Drei Anwendungsfälle</h2>
+      <h2 class="node-row" style="margin-top: 3rem; font-family: var(--font-display); font-size: 1.4rem; color: var(--color-primary)">
+        <span class="node node--sm node--active">01</span> Drei Anwendungsfälle
+      </h2>
       <div class="cards">
         <div class="card">
           <h3>Prozessmodellierung</h3>
@@ -55,8 +60,10 @@
         </div>
       </div>
 
-      <h2 style="margin-top: 2.5rem">Bewertungskriterien</h2>
-      <ul style="margin-top: 1rem; color: rgba(16, 24, 21, 0.8)">
+      <h2 class="node-row" style="margin-top: 3rem; font-family: var(--font-display); font-size: 1.4rem; color: var(--color-primary)">
+        <span class="node node--sm node--active">02</span> Bewertungskriterien
+      </h2>
+      <ul class="numbered-list" style="margin-top: 1.5rem; color: rgba(16, 24, 21, 0.8); list-style: none; padding: 0">
         <li>Modellierungsqualität</li>
         <li>Plattform-Integration</li>
         <li>Konformitätsprüfung</li>
@@ -65,7 +72,9 @@
         <li>Beschaffungsrahmen (Ausschreibung vs. flexibel vs. Open Source)</li>
       </ul>
 
-      <h2 id="open-source-tools" style="margin-top: 2.5rem">Open-Source-Tools</h2>
+      <h2 id="open-source-tools" class="node-row" style="margin-top: 3rem; font-family: var(--font-display); font-size: 1.4rem; color: var(--color-primary)">
+        <span class="node node--sm node--active">03</span> Open-Source-Tools
+      </h2>
       <p style="margin-top: 1rem; color: rgba(16, 24, 21, 0.8)">
         Open Source bedeutet mehr Flexibilität, erfordert aber eigenes Entwicklungs-Know-how &mdash; im Gegensatz zu
         kommerziellen Tools wie ADONIS, SUMM AI oder PICTURE nova.
@@ -91,5 +100,6 @@
 <script>
   renderOpenSourceTable(document.getElementById("open-source-table"));
 </script>
+<script src="js/reveal.js"></script>
 </body>
 </html>
