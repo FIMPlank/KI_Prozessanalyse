@@ -187,12 +187,19 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem 2.5rem;
+  gap: 1rem;
+}
+
+.trust-item {
+  border: 1px solid rgba(11, 43, 36, 0.15);
+  border-radius: 0.375rem;
+  background-color: #fff;
+  padding: 0.5rem 1.1rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgba(16, 24, 21, 0.6);
+  color: rgba(16, 24, 21, 0.65);
 }
 
 /* Sections */
@@ -225,6 +232,14 @@ a {
   background-color: #fff;
   border-radius: 0.5rem;
   padding: 1.5rem;
+}
+
+.usecase-icon {
+  display: block;
+  width: 100%;
+  max-width: 8rem;
+  height: auto;
+  margin-bottom: 0.75rem;
 }
 
 .card h3 {

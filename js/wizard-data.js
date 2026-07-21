@@ -73,28 +73,46 @@ const tools = {
   },
 };
 
-function computeRecommendation(answers) {
-  const { q1, q2, q3, q4, q5 } = answers;
+// Punkte pro Antwort und Tool — Heuristik statt starrer if/else-Kette.
+const SCORE_TABLE = {
+  q1: {
+    ja: { adonis: 2, "open-source": 1 },
+    nein: { "picture-nova": 2, "summ-ai": 1 },
+  },
+  q2: {
+    einzeln: { adonis: 1, "open-source": 1 },
+    team: { "summ-ai": 2, "picture-nova": 1 },
+  },
+  q3: {
+    cloud: { "picture-nova": 2, "summ-ai": 1 },
+    "on-premise": { adonis: 2, "open-source": 1 },
+    offen: {},
+  },
+  q4: {
+    ausschreibungspflichtig: { adonis: 2, "picture-nova": 1 },
+    flexibel: { "summ-ai": 1, "picture-nova": 1, "open-source": 1 },
+    opensource: { "open-source": 3 },
+  },
+  q5: {
+    modellierungsqualitaet: { "summ-ai": 2, adonis: 1 },
+    plattformintegration: { adonis: 2 },
+    konformitaetspruefung: { "picture-nova": 2 },
+    kosten: { "open-source": 3 },
+  },
+};
 
-  if (q4 === "opensource" || q5 === "kosten") {
-    return { primary: "open-source", secondary: q3 === "cloud" ? "picture-nova" : "adonis" };
+function computeRecommendation(answers) {
+  const scores = { adonis: 0, "summ-ai": 0, "picture-nova": 0, "open-source": 0 };
+
+  for (const [questionId, value] of Object.entries(answers)) {
+    const contributions = SCORE_TABLE[questionId]?.[value] ?? {};
+    for (const [toolId, points] of Object.entries(contributions)) {
+      scores[toolId] += points;
+    }
   }
-  if (q4 === "ausschreibungspflichtig" && q3 === "on-premise") {
-    return { primary: "adonis", secondary: "open-source" };
-  }
-  if (q5 === "konformitaetspruefung") {
-    return { primary: "summ-ai", secondary: "adonis" };
-  }
-  if (q2 === "team" && q3 === "cloud") {
-    return { primary: "picture-nova", secondary: "summ-ai" };
-  }
-  if (q1 === "ja" && q5 === "plattformintegration") {
-    return { primary: "adonis", secondary: "picture-nova" };
-  }
-  if (q1 === "nein") {
-    return { primary: "picture-nova", secondary: "summ-ai" };
-  }
-  return { primary: "adonis", secondary: "open-source" };
+
+  const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  return { primary: ranked[0][0], secondary: ranked[1][0] };
 }
 
 const STORAGE_KEY = "ki-prozessanalyse:wizard-answers";
