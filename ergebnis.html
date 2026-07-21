@@ -39,8 +39,19 @@
       </p>
 
       <div class="panel">
-        <h2>Basierend auf Ihren Antworten</h2>
-        <ul id="answer-list" class="answer-list"></ul>
+        <h2>Warum dieses Tool</h2>
+        <ul id="reasons-list" class="answer-list"></ul>
+      </div>
+
+      <div class="panel">
+        <h2>Wichtigste Einschränkung</h2>
+        <p id="limitation-text" style="margin: 0; font-size: 0.9rem; color: rgba(16, 24, 21, 0.8)"></p>
+      </div>
+
+      <div id="primary-os-wrap" class="panel" hidden>
+        <h2>Open-Source-Alternativen im Detail</h2>
+        <p id="primary-os-guidance" style="margin-top: 0.5rem; font-size: 0.85rem; color: rgba(16, 24, 21, 0.7)"></p>
+        <div id="primary-os-table"></div>
       </div>
 
       <div class="panel">
@@ -48,30 +59,36 @@
         <p style="margin: 0; font-size: 0.9rem; color: rgba(16, 24, 21, 0.8)">
           <strong id="alt-name"></strong> &mdash; <span id="alt-description"></span>
         </p>
+        <div id="alt-os-wrap" hidden>
+          <p id="alt-os-guidance" style="margin-top: 1rem; font-size: 0.85rem; color: rgba(16, 24, 21, 0.7)"></p>
+          <div id="alt-os-table"></div>
+        </div>
       </div>
 
-      <div id="lead-form-wrap" class="panel">
-        <h2 class="alt-title">Weiteres Interesse?</h2>
-        <form id="lead-form" class="lead-form">
-          <label for="email">Vollständigen Vergleich + Whitepaper erhalten</label>
+      <div class="panel">
+        <h2>Basierend auf Ihren Antworten</h2>
+        <ul id="answer-list" class="answer-list"></ul>
+      </div>
+
+      <div class="panel">
+        <h2 class="alt-title">Ergebnis als PDF erhalten</h2>
+        <p style="margin: 0 0 1rem; font-size: 0.9rem; color: rgba(16, 24, 21, 0.8)">
+          Erhalten Sie Ihre Empfehlung inklusive Vergleichsmatrix und Handlungsempfehlung per E-Mail.
+        </p>
+        <form class="lead-form" aria-describedby="pdf-unavailable-note">
+          <label for="email">E-Mail-Adresse</label>
           <div class="row">
-            <input id="email" type="email" required placeholder="name@behoerde.de" />
-            <button id="lead-submit" type="submit" class="btn">Erhalten</button>
+            <input id="email" type="email" placeholder="name@behoerde.de" disabled />
+            <button type="submit" class="btn" disabled>Anfordern</button>
           </div>
-          <p id="lead-error" class="error" hidden></p>
         </form>
-        <p style="margin: 1rem 0 0; font-size: 0.85rem">
-          Oder für eine individuelle Beratung:
+        <p id="pdf-unavailable-note" class="notice" style="margin-top: 0.75rem">
+          Diese Funktion ist aktuell noch nicht verfügbar. Für eine individuelle Beratung:
           <!-- Platzhalter-Adresse, vor Livegang durch echte FIM-Kontaktadresse ersetzen -->
           <a href="mailto:beratung@fim-rc.de?subject=Beratung%20KI-Prozessanalyse" style="color: var(--color-accent); text-decoration: underline"
             >E-Mail an FIM senden</a
           >
         </p>
-      </div>
-
-      <div id="lead-success" class="lead-success" hidden>
-        <p>Danke! Ihr vollständiger Vergleich und das Whitepaper sind bereit.</p>
-        <a href="report.html" class="btn" style="margin-top: 1rem">Zum Report</a>
       </div>
 
       <p style="margin-top: 1.5rem; font-size: 0.9rem">
@@ -94,6 +111,7 @@
 </footer>
 
 <script src="js/wizard-data.js"></script>
+<script src="js/open-source-tools.js"></script>
 <script src="js/ergebnis.js"></script>
 </body>
 </html>

@@ -52,24 +52,69 @@ const tools = {
     tagline: "Vorbereitende Modellierung mit hoher Plattform-Integration",
     description:
       "ADONIS eignet sich, wenn bereits Prozessunterlagen vorliegen und Modellierungsqualität sowie Plattform-Integration im Vordergrund stehen.",
+    geeignetFuer: "Vorbereitende Modellierung mit vorhandenen Unterlagen, ausschreibungspflichtige Beschaffung",
+    staerke: "Plattform-Integration",
+    tradeoff: "Weniger auf spontane Team-Zusammenarbeit in der Cloud ausgelegt",
+    hosting: "On-Premise",
   },
   "summ-ai": {
     name: "SUMM AI",
-    tagline: "Kollaborative Modellierung mit Fokus auf Konformität",
+    tagline: "Kollaborative Modellierung im Team",
     description:
-      "SUMM AI passt, wenn im Team parallel gearbeitet wird und die Konformitätsprüfung das wichtigste Kriterium ist.",
+      "SUMM AI passt, wenn im Team parallel gearbeitet wird und Modellierungsqualität im Vordergrund steht.",
+    geeignetFuer: "Kollaborative Modellierung im Team, auch ohne vorhandene Unterlagen",
+    staerke: "Modellierungsqualität im Team-Kontext",
+    tradeoff: "Kein Schwerpunkt auf Konformitätsprüfung",
+    hosting: "Cloud",
   },
   "picture-nova": {
     name: "PICTURE nova",
-    tagline: "Kollaborativ, cloudbasiert, flexibel beschaffbar",
+    tagline: "Kollaborativ, cloudbasiert, mit Fokus auf Konformität",
     description:
-      "PICTURE nova ist die richtige Wahl für kollaborative Modellierung in der Cloud mit flexiblem Beschaffungsrahmen.",
+      "PICTURE nova ist die richtige Wahl für kollaborative Modellierung in der Cloud mit Fokus auf Konformitätsprüfung.",
+    geeignetFuer: "Kollaborative Cloud-Modellierung mit Konformitätsprüfung als Kriterium",
+    staerke: "Konformitätsprüfung",
+    tradeoff: "Nicht auf strikte On-Premise-Vorgaben ausgelegt",
+    hosting: "Cloud",
   },
   "open-source": {
     name: "Open-Source-Stack",
     tagline: "Kosteneffizient, on-premise-fähig, sechs Alternativen",
     description:
       "Wenn Kosten oder Open-Source-Kapazität im Vordergrund stehen bzw. eine Ausschreibung ansteht, empfiehlt sich einer der sechs Open-Source-Alternativen.",
+    geeignetFuer: "Kosten- und beschaffungssensible Vorhaben mit eigener Entwicklungskapazität",
+    staerke: "Kosteneffizienz",
+    tradeoff: "Erfordert eigenes Entwicklungs-Know-how",
+    hosting: "On-Premise / selbst gehostet",
+  },
+};
+
+// Kurzbegründung pro Antwort, unabhängig vom Tool — wird für die
+// personalisierten Empfehlungsgründe auf der Ergebnisseite verwendet.
+const REASON_TEXT = {
+  q1: {
+    ja: "Es liegen bereits Prozessunterlagen vor",
+    nein: "Es liegen noch keine Prozessunterlagen vor",
+  },
+  q2: {
+    einzeln: "Die Modellierung erfolgt durch eine Einzelperson",
+    team: "Die Modellierung erfolgt im Team, parallel",
+  },
+  q3: {
+    cloud: "Das Tool soll in der Cloud gehostet werden",
+    "on-premise": "Das Tool soll On-Premise gehostet werden",
+    offen: "Das Hosting ist noch offen",
+  },
+  q4: {
+    ausschreibungspflichtig: "Die Beschaffung ist ausschreibungspflichtig",
+    flexibel: "Der Beschaffungsrahmen ist flexibel",
+    opensource: "Es ist Open-Source-Kapazität vorhanden",
+  },
+  q5: {
+    modellierungsqualitaet: "Modellierungsqualität ist Ihnen am wichtigsten",
+    plattformintegration: "Plattform-Integration ist Ihnen am wichtigsten",
+    konformitaetspruefung: "Konformitätsprüfung ist Ihnen am wichtigsten",
+    kosten: "Kosten sind Ihnen am wichtigsten",
   },
 };
 
@@ -115,8 +160,22 @@ function computeRecommendation(answers) {
   return { primary: ranked[0][0], secondary: ranked[1][0] };
 }
 
+function getRecommendationReasons(answers, toolId, limit = 3) {
+  const contributions = [];
+  for (const [questionId, value] of Object.entries(answers)) {
+    const points = SCORE_TABLE[questionId]?.[value]?.[toolId] ?? 0;
+    if (points > 0) {
+      contributions.push({ points, text: REASON_TEXT[questionId]?.[value] ?? "" });
+    }
+  }
+  return contributions
+    .sort((a, b) => b.points - a.points)
+    .slice(0, limit)
+    .map((c) => c.text)
+    .filter(Boolean);
+}
+
 const STORAGE_KEY = "ki-prozessanalyse:wizard-answers";
-const LEAD_KEY = "ki-prozessanalyse:lead-captured";
 
 function getAnswers() {
   try {
@@ -136,12 +195,4 @@ function setAnswer(id, value) {
 
 function clearAnswers() {
   window.localStorage.removeItem(STORAGE_KEY);
-}
-
-function markLeadCaptured() {
-  window.localStorage.setItem(LEAD_KEY, "1");
-}
-
-function hasLeadCaptured() {
-  return window.localStorage.getItem(LEAD_KEY) === "1";
 }

@@ -8,27 +8,27 @@ Plain HTML/CSS/vanilla JS — kein Build-Schritt, kein Node erforderlich. Einfac
 
 | Datei | Zweck |
 |---|---|
-| `index.html` | Landing: Hero, Anwendungsfälle, Tool-Übersicht, Social Proof |
+| `index.html` | Landing: Hero mit Beispiel-Ergebnis, Anwendungsfälle, Tool-Übersicht, Social Proof |
 | `wizard.html` | 5-Fragen-Tool-Analyse (Client-State via `localStorage`) |
-| `ergebnis.html` | Empfehlung + Begründung + E-Mail-Gate + FIM-Kontakt |
-| `report.html` | Whitepaper-Download, freigeschaltet nach E-Mail-Gate |
-| `methodik.html` | Anwendungsfälle und Bewertungskriterien |
+| `ergebnis.html` | Empfehlung, Begründung, Einschränkung, Alternative, Antwort-Zusammenfassung; optionales PDF-per-E-Mail-Formular |
+| `methodik.html` | Anwendungsfälle, Bewertungskriterien, Open-Source-Tools-Tabelle |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (**Platzhalter**, siehe unten) |
 
 ## Struktur
 
 ```
-css/styles.css        Design-Tokens, Layout, Komponenten
-js/wizard-data.js      Fragen, Tools, Scoring-Funktion (Empfehlungslogik)
-js/wizard.js           Rendert die Fragen-Schritte
-js/process-path.js     Fortschrittsanzeige (Prozesspfad-Signaturelement)
-js/ergebnis.js         Empfehlung berechnen, Antworten anzeigen, Lead-Form
+css/styles.css              Design-Tokens, Layout, Komponenten
+js/wizard-data.js           Fragen, Tools, Scoring-Funktion (Empfehlungslogik)
+js/wizard.js                Rendert die Fragen-Schritte
+js/process-path.js          Fortschrittsanzeige (Prozesspfad-Signaturelement)
+js/open-source-tools.js     Daten + Render-Funktion für die 6 Open-Source-Tools (methodik.html + ergebnis.html)
+js/ergebnis.js               Empfehlung berechnen, Gründe/Einschränkung/Antworten anzeigen
 ```
 
-Empfehlungslogik: `computeRecommendation()` in `js/wizard-data.js` vergibt pro Antwort Punkte an die vier Tools (`SCORE_TABLE`) und wählt die höchste als Primär-, die zweithöchste als Alternativempfehlung.
+Empfehlungslogik: `computeRecommendation()` in `js/wizard-data.js` vergibt pro Antwort Punkte an die vier Tools (`SCORE_TABLE`) und wählt die höchste als Primär-, die zweithöchste als Alternativempfehlung. `getRecommendationReasons()` leitet daraus die personalisierten Gründe auf der Ergebnisseite ab.
 
 ## Offene Punkte vor Livegang
 
-- **CRM/Mail-Endpoint**: Das E-Mail-Gate (`js/ergebnis.js`) speichert aktuell nur lokal — Anbindung an ein echtes CRM/Mail-Tool fehlt noch.
+- **PDF/Mail-Integration**: Das "Ergebnis als PDF erhalten"-Formular auf `ergebnis.html` ist bewusst deaktiviert (kein Fake-Erfolg) — es fehlt noch eine echte PDF-Generierung und ein Mail-/CRM-Endpoint.
 - **Rechtstexte**: `impressum.html` und `datenschutz.html` enthalten Platzhalter, die vor Livegang durch geprüfte Inhalte ersetzt werden müssen.
 - **FIM-Kontaktadresse**: Der Mailto-Link auf `ergebnis.html` nutzt eine Platzhalter-Adresse (`beratung@fim-rc.de`).

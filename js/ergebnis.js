@@ -17,6 +17,32 @@
   document.getElementById("alt-name").textContent = secondaryTool.name;
   document.getElementById("alt-description").textContent = secondaryTool.description;
 
+  const reasonsList = document.getElementById("reasons-list");
+  reasonsList.innerHTML = "";
+  getRecommendationReasons(answers, primary).forEach((reason) => {
+    const li = document.createElement("li");
+    li.textContent = reason;
+    reasonsList.appendChild(li);
+  });
+
+  document.getElementById("limitation-text").textContent = primaryTool.tradeoff;
+
+  const sortByUx = answers.q4 === "opensource";
+  const osGuidance =
+    "Wählen Sie anhand von Benutzerfreundlichkeit und Code-Verfügbarkeit passend zu Ihren Kapazitäten." +
+    (sortByUx ? " Sortiert nach Benutzerfreundlichkeit, da Open-Source-Kapazität vorhanden ist." : "");
+
+  if (primary === "open-source") {
+    document.getElementById("primary-os-wrap").hidden = false;
+    document.getElementById("primary-os-guidance").textContent = osGuidance;
+    renderOpenSourceTable(document.getElementById("primary-os-table"), { sortByUx });
+  }
+  if (secondary === "open-source") {
+    document.getElementById("alt-os-wrap").hidden = false;
+    document.getElementById("alt-os-guidance").textContent = osGuidance;
+    renderOpenSourceTable(document.getElementById("alt-os-table"), { sortByUx });
+  }
+
   const list = document.getElementById("answer-list");
   list.innerHTML = "";
   questions.forEach((q) => {
@@ -25,34 +51,5 @@
     const li = document.createElement("li");
     li.innerHTML = `<span class="q">${q.prompt}</span> &mdash; <strong>${option ? option.label : ""}</strong>`;
     list.appendChild(li);
-  });
-
-  const form = document.getElementById("lead-form");
-  const emailInput = document.getElementById("email");
-  const errorEl = document.getElementById("lead-error");
-  const submitBtn = document.getElementById("lead-submit");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    errorEl.hidden = true;
-
-    const email = emailInput.value.trim();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!valid) {
-      errorEl.textContent = "Bitte eine gültige E-Mail-Adresse eingeben.";
-      errorEl.hidden = false;
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Wird gesendet…";
-
-    // CRM/Mail-Endpoint ist laut Spec noch offen (Abschnitt 8) — hier lokal
-    // simuliert, bis der Endpoint feststeht.
-    setTimeout(() => {
-      markLeadCaptured();
-      document.getElementById("lead-form-wrap").hidden = true;
-      document.getElementById("lead-success").hidden = false;
-    }, 400);
   });
 })();

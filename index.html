@@ -33,9 +33,53 @@
 
 <main>
   <section class="hero">
-    <div class="wrap-narrow">
-      <h1>Welches KI-Tool passt zu Ihrem Prozessmanagement?<br />Finden Sie es in 5 Fragen heraus.</h1>
-      <a href="wizard.html" class="btn">Tool-Analyse starten</a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>Finden Sie das passende KI-Tool für Ihre Prozesse</h1>
+        <p class="hero-subhead">
+          Beantworten Sie 5 kurze Fragen und erhalten Sie eine nachvollziehbare Empfehlung &ndash; abgestimmt auf
+          Einsatzgebiet, Hosting, Kosten und Beschaffung.
+        </p>
+        <a href="wizard.html" class="btn">Kostenlose Tool-Analyse starten</a>
+        <ul class="reassurance-list">
+          <li>
+            <svg class="reassurance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Dauert etwa 2 Minuten
+          </li>
+          <li>
+            <svg class="reassurance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M8 12.5l2.5 2.5L16 9" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Keine Registrierung erforderlich
+          </li>
+          <li>
+            <svg class="reassurance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M4 5.5A2 2 0 0 1 6 4h5v16H6a2 2 0 0 0-2 1.5V5.5Z" stroke-linejoin="round" />
+              <path d="M20 5.5A2 2 0 0 0 18 4h-5v16h5a2 2 0 0 1 2 1.5V5.5Z" stroke-linejoin="round" />
+            </svg>
+            Basierend auf einem wissenschaftlichen Entscheidungsmodell
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero-sample">
+        <div class="sample-card" role="img" aria-label="Beispielhaftes Ergebnis: PICTURE nova mit hoher Übereinstimmung. Dies ist nicht Ihr tatsächliches Ergebnis.">
+          <span class="sample-badge">Beispiel-Ergebnis</span>
+          <p class="sample-tool">PICTURE nova</p>
+          <p class="sample-status">Hohe Übereinstimmung</p>
+          <ul class="sample-reasons">
+            <li>Geeignet für schnelle Prozessmodellierung</li>
+            <li>Cloudbasierte Zusammenarbeit</li>
+            <li>Geringer Einführungsaufwand</li>
+          </ul>
+          <p class="sample-alt">Alternative: ADONIS</p>
+        </div>
+        <p class="sample-caption">Nur ein Beispiel &ndash; Ihr Ergebnis kann abweichen.</p>
+      </div>
     </div>
   </section>
 
@@ -84,6 +128,10 @@
       </div>
       <p style="margin-top: 1rem; font-size: 0.9rem">
         <a href="methodik.html" style="color: var(--color-accent); text-decoration: underline">Mehr zur Methodik</a>
+        &middot;
+        <a href="methodik.html#open-source-tools" style="color: var(--color-accent); text-decoration: underline"
+          >+ 6 Open-Source-Alternativen</a
+        >
       </p>
     </div>
   </section>
@@ -94,19 +142,39 @@
       <div class="tools-grid">
         <div class="card">
           <h3 class="tool-name">ADONIS</h3>
-          <p>Vorbereitende Modellierung mit hoher Plattform-Integration.</p>
+          <dl class="tool-facts">
+            <div><dt>Geeignet für</dt><dd>Vorbereitende Modellierung mit vorhandenen Unterlagen, ausschreibungspflichtige Beschaffung</dd></div>
+            <div><dt>Stärke</dt><dd>Plattform-Integration</dd></div>
+            <div><dt>Trade-off</dt><dd>Weniger auf spontane Team-Zusammenarbeit in der Cloud ausgelegt</dd></div>
+            <div><dt>Hosting</dt><dd>On-Premise</dd></div>
+          </dl>
         </div>
         <div class="card">
           <h3 class="tool-name">SUMM AI</h3>
-          <p>Kollaborative Modellierung mit Fokus auf Konformität.</p>
+          <dl class="tool-facts">
+            <div><dt>Geeignet für</dt><dd>Kollaborative Modellierung im Team, auch ohne vorhandene Unterlagen</dd></div>
+            <div><dt>Stärke</dt><dd>Modellierungsqualität im Team-Kontext</dd></div>
+            <div><dt>Trade-off</dt><dd>Kein Schwerpunkt auf Konformitätsprüfung</dd></div>
+            <div><dt>Hosting</dt><dd>Cloud</dd></div>
+          </dl>
         </div>
         <div class="card">
           <h3 class="tool-name">PICTURE nova</h3>
-          <p>Kollaborativ, cloudbasiert, flexibel beschaffbar.</p>
+          <dl class="tool-facts">
+            <div><dt>Geeignet für</dt><dd>Kollaborative Cloud-Modellierung mit Konformitätsprüfung als Kriterium</dd></div>
+            <div><dt>Stärke</dt><dd>Konformitätsprüfung</dd></div>
+            <div><dt>Trade-off</dt><dd>Nicht auf strikte On-Premise-Vorgaben ausgelegt</dd></div>
+            <div><dt>Hosting</dt><dd>Cloud</dd></div>
+          </dl>
         </div>
         <div class="card">
           <h3 class="tool-name">Open-Source-Stack</h3>
-          <p>Kosteneffizient, on-premise-fähig, sechs Alternativen.</p>
+          <dl class="tool-facts">
+            <div><dt>Geeignet für</dt><dd>Kosten- und beschaffungssensible Vorhaben mit eigener Entwicklungskapazität</dd></div>
+            <div><dt>Stärke</dt><dd>Kosteneffizienz</dd></div>
+            <div><dt>Trade-off</dt><dd>Erfordert eigenes Entwicklungs-Know-how</dd></div>
+            <div><dt>Hosting</dt><dd>On-Premise / selbst gehostet</dd></div>
+          </dl>
         </div>
       </div>
       <p style="margin-top: 1rem; font-size: 0.9rem">
